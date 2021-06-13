@@ -6,7 +6,7 @@ import UncontrolledAccordion from './components/UncontrolledAccordion/Uncontroll
 
 function App() {
     return (
-        <div>
+        <div className={'App'}>
              <PageTitle title={"This is APP component"}/>
             <PageTitle title={"My friends"}/>
 
