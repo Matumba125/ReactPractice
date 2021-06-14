@@ -6,16 +6,11 @@ function UncontrolledRating() {
     let [score, setScore] = useState<RatingType>(0)
     return (
         <div>
-            <Star selected={score > 0}/>
-            <Star selected={score > 1}/>
-            <Star selected={score > 2}/>
-            <Star selected={score > 3}/>
-            <Star selected={score > 4}/>
-            <button onClick={() => setScore(1)}>1</button>
-            <button onClick={() => setScore(2)}>2</button>
-            <button onClick={() => setScore(3)}>3</button>
-            <button onClick={() => setScore(4)}>4</button>
-            <button onClick={() => setScore(5)}>5</button>
+            <Star selected={score > 0} setScore={()=>{setScore(1)}} />
+            <Star selected={score > 1} setScore={()=>{setScore(2)}} />
+            <Star selected={score > 2} setScore={()=>{setScore(3)}} />
+            <Star selected={score > 3} setScore={()=>{setScore(4)}} />
+            <Star selected={score > 4} setScore={()=>{setScore(5)}} />
         </div>
     )
 
@@ -23,10 +18,13 @@ function UncontrolledRating() {
 
 type StarPropsType = {
     selected: boolean
+    setScore: () => void
 }
 
 function Star(props: StarPropsType) {
-    return (props.selected && <span><b>star </b></span>) || <span>star </span>
+    return <span onClick={() => props.setScore()}>
+        {props.selected ? <b>star </b> : "star "}
+    </span>
 
 }
 
